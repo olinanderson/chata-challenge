@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Chata Frontend Coding Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Create a cocktail recipe book!
 
-## Available Scripts
+Your goal for this challenge is to create a "recipe book" for cocktails based on their alcohol ingredient. The user should be able to browse different recipes based on their ingredient, and get more detailed information on the cocktail of their choosing.
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+To start this challenge, simply clone or fork this repo. When making changes, feel free to organize your code however you like. You can move files around and create new folders and files based off your own organizational structure preferences.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+If you prefer to use a different framework than React or none at all, feel free to start your own project from scratch. This will not affect your evaluation.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## The Cocktail Data
 
-### `npm test`
+You will be using "TheCocktailDB" API.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+All necessary documentation for this API can be found here https://www.thecocktaildb.com/api.php?ref=apilist.fun
 
-### `npm run build`
+It will be up to you to choose which methods you want to use to complete the task.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`Note: You will not need to use any of the methods that require Patreon support`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Challenge Requirements
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Choose 5 or more different alcohol ingredients (eg. rum, vodka, gin, etc.) and create a tab for each type of alcohol
+2. In each tab, display the full list of cocktails for that specific ingredient. The way you choose to display this list is up to you.
+3. A user should be able to click on a cocktail to get more detailed information about it. The way you display this information and the type of information you want to display is up to you. For example, you could show the recipe details by expanding the list item to show underneath the title, or you could open up a modal with the recipe, etc.
 
-### `npm run eject`
+Feel free to use any 3rd party libraries of your choice
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Tips
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- As with any project, it is good to have a solid plan in place before diving into the code. Creating a simple mockup or wireframe of your design could help save time with this challenge
+- Don't try to reinvent the wheel!
+- Think componentization and reusability
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Submission Instructions
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Submission Date is 8am, Nov 22nd.
 
-## Learn More
+Create a private repo in GitHub and invite Ben-CHATA and rschesnuk to the repo
+All documents should be available in the repo
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+If you can not complete this challenge within the given time frame, please submit any work that you have. There will be multiple factors considered in our evaluation, so an incomplete project doesn't necessarily equal a bad evaluation.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for taking the time to take part in this challenge. We look forward to seeing your project!
