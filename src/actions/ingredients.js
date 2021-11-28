@@ -64,7 +64,6 @@ export const getCurrentlySelected = (currentlySelected) => async (dispatch) => {
         };
       }
     }
-
     dispatch({
       payload: payload,
       type: GET_CURRENTLY_SELECTED,

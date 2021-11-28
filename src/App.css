@@ -47,12 +47,18 @@ html,
 .main-content {
   margin-left: 300px;
   padding: 10px;
+  height: 100vh;
 }
 
 .main-content .title {
   font-size: 1.5rem;
   border-bottom: 1px solid grey;
   padding: 10px;
+}
+
+.main-content img {
+  height: 100px;
+  width: 100px;
 }
 
 button {

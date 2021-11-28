@@ -1,20 +1,17 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
 
-import PropTypes from "prop-types";
-
-const Navbar = ({ currentlySelected }) => {
+const Navbar = ({ currentlySelectedResponsive }) => {
   let activeStyle = {
-    "border-right": "5px solid #348feb",
+    borderRight: "5px solid #348feb",
   };
 
-  let navbarList = currentlySelected.map((element, index) => {
+  let navbarList = currentlySelectedResponsive.map((element, index) => {
     return (
       <div className="navbar-element" key={index}>
         <NavLink
           // to={element.strIngredient}
-          to={"drinks/" + element.strIngredient.replace(/ /g, "_")}
+          to={"drinks/" + index}
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
           {element.strIngredient}
@@ -42,12 +39,4 @@ const Navbar = ({ currentlySelected }) => {
   );
 };
 
-Navbar.propTypes = {
-  currentlySelected: PropTypes.array.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  currentlySelected: state.ingredients.currentlySelected,
-});
-
-export default connect(mapStateToProps, {})(Navbar);
+export default Navbar;

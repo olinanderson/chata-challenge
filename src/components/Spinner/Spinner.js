@@ -7,11 +7,12 @@ export default () => (
       src={spinner}
       alt="Loading..."
       style={{
-        width: "80px",
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        display: "block",
+        width: "40px",
+        height: "40px",
+        display: "flex",
+        justifyContent: " center",
+        alignSelf: "center",
+        margin: "auto",
       }}
     />
   </Fragment>

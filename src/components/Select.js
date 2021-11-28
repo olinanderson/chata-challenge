@@ -9,9 +9,10 @@ import { getCurrentlySelected } from "../actions/ingredients";
 
 const Select = ({
   getCurrentlySelected,
-  currentlySelected,
   alcoholicIngredients,
   alcoholicIngredientsLoaded,
+  currentlySelectedResponsive,
+  setCurrentlySelectedResponsive,
 }) => {
   if (!alcoholicIngredientsLoaded) {
     return (
@@ -24,29 +25,39 @@ const Select = ({
   alcoholicIngredients.sort();
 
   const handleOnClick = (e) => {
-    if (currentlySelected.length >= 5) {
+    if (currentlySelectedResponsive.length >= 5) {
       let alreadyActive = false;
-      for (let i = 0; i < currentlySelected.length; i++) {
-        if (currentlySelected[i].strIngredient === e.target.innerText) {
+      for (let i = 0; i < currentlySelectedResponsive.length; i++) {
+        if (
+          currentlySelectedResponsive[i].strIngredient === e.target.innerText
+        ) {
           alreadyActive = true;
         }
       }
 
       if (alreadyActive) {
         let newCurrentlySelected;
-        if (currentlySelected.length !== 5) {
-          newCurrentlySelected = currentlySelected.filter(
+        if (currentlySelectedResponsive.length !== 5) {
+          newCurrentlySelected = currentlySelectedResponsive.filter(
             (value, index, arr) => {
               return value.strIngredient !== e.target.innerText;
             }
           );
         } else {
-          newCurrentlySelected = currentlySelected;
+          newCurrentlySelected = currentlySelectedResponsive;
         }
         getCurrentlySelected([...newCurrentlySelected]);
+        setCurrentlySelectedResponsive([...newCurrentlySelected]);
       } else {
         getCurrentlySelected([
-          ...currentlySelected,
+          ...currentlySelectedResponsive,
+          {
+            strIngredient: e.target.innerText,
+            drinksLoaded: false,
+          },
+        ]);
+        setCurrentlySelectedResponsive([
+          ...currentlySelectedResponsive,
           {
             strIngredient: e.target.innerText,
             drinksLoaded: false,
@@ -58,8 +69,8 @@ const Select = ({
 
   const list = alcoholicIngredients.map((element, index) => {
     // Checking if it is currently selected
-    for (let i = 0; i < currentlySelected.length; i++) {
-      if (currentlySelected[i].strIngredient === element) {
+    for (let i = 0; i < currentlySelectedResponsive.length; i++) {
+      if (currentlySelectedResponsive[i].strIngredient === element) {
         return (
           <button
             className="active"
@@ -81,26 +92,22 @@ const Select = ({
 
   return (
     <Fragment>
-      <div className="main-content">
-        <p className="title">
-          Choose 5 or more different alcohol ingredients (eg. rum, vodka, gin,
-          etc.)
-        </p>
-        {list}
-      </div>
+      <p className="title">
+        Choose 5 or more different alcohol ingredients (eg. rum, vodka, gin,
+        etc.)
+      </p>
+      {list}
     </Fragment>
   );
 };
 
 Select.propTypes = {
   getCurrentlySelected: PropTypes.func.isRequired,
-  currentlySelected: PropTypes.array.isRequired,
   alcoholicIngredients: PropTypes.array.isRequired,
   alcoholicIngredientsLoaded: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  currentlySelected: state.ingredients.currentlySelected,
   alcoholicIngredientsLoaded: state.ingredients.alcoholicIngredientsLoaded,
   alcoholicIngredients: state.ingredients.alcoholicIngredients,
 });
