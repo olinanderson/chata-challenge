@@ -2,7 +2,9 @@
 
 ## Start script
 
-npm install followed by npm start
+`npm install`
+followed by
+`npm start`
 
 ## Create a cocktail recipe book!
 
