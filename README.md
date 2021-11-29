@@ -1,5 +1,9 @@
 # Chata Frontend Coding Challenge
 
+## Start script
+
+npm install followed by npm start
+
 ## Create a cocktail recipe book!
 
 Your goal for this challenge is to create a "recipe book" for cocktails based on their alcohol ingredient. The user should be able to browse different recipes based on their ingredient, and get more detailed information on the cocktail of their choosing.
@@ -44,3 +48,5 @@ All documents should be available in the repo
 If you can not complete this challenge within the given time frame, please submit any work that you have. There will be multiple factors considered in our evaluation, so an incomplete project doesn't necessarily equal a bad evaluation.
 
 Thank you for taking the time to take part in this challenge. We look forward to seeing your project!
+
+##
