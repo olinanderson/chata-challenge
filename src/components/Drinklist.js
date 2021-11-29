@@ -40,6 +40,10 @@ const Drinklist = ({
     }
   };
 
+  const handleOnExit = () => {
+    setShowDrinkId(0);
+  };
+
   let drinksListArray = currentlySelected.drinks.map((element, index) => {
     return (
       <div
@@ -50,6 +54,13 @@ const Drinklist = ({
         onClick={(e) => handleOnClick(e)}
         key={index}
       >
+        <i
+          className={`fas fa-2x fa-times-circle ${
+            element.idDrink === showDrinkId ? "" : "exit-not-active"
+          }`}
+          onClick={handleOnExit}
+        ></i>
+
         <div className="top-card-drink">
           <img
             src={element.strDrinkThumb}
