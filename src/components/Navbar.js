@@ -1,17 +1,43 @@
-import React, { Fragment } from "react";
-import { NavLink } from "react-router-dom";
+import React, { Fragment, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { connect } from "react-redux";
 
-const Navbar = ({ currentlySelectedResponsive }) => {
+import PropTypes from "prop-types";
+
+import { getCurrentlySelected } from "../actions/ingredients";
+
+const Navbar = ({
+  selectedArray,
+  getCurrentlySelected,
+  setLoading,
+  currentlySelectedLoaded,
+}) => {
   let activeStyle = {
     borderRight: "5px solid #348feb",
+    backgroundColor: "#838383",
   };
 
-  let navbarList = currentlySelectedResponsive.map((element, index) => {
+  const ingredient = useLocation().pathname.slice(8);
+
+  useEffect(() => {
+    if (currentlySelectedLoaded) {
+      setLoading(false);
+    }
+  }, [currentlySelectedLoaded, setLoading]);
+
+  const handleOnClick = (e) => {
+    if (ingredient !== e.target.innerText.replace(/ /g, "_")) {
+      setLoading(true);
+      getCurrentlySelected(e.target.innerText);
+    }
+  };
+
+  let navbarList = selectedArray.map((element, index) => {
     return (
       <div className="navbar-element" key={index}>
         <NavLink
-          // to={element.strIngredient}
-          to={"drinks/" + index}
+          onClick={handleOnClick}
+          to={"drinks/" + element.strIngredient.replace(/ /g, "_")}
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
           {element.strIngredient}
@@ -29,7 +55,7 @@ const Navbar = ({ currentlySelectedResponsive }) => {
             to=""
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
-            Select Alcohol Ingredients
+            Ingredient Selector
           </NavLink>
           {/* <div className="navbar-selected"></div> */}
         </div>
@@ -39,4 +65,14 @@ const Navbar = ({ currentlySelectedResponsive }) => {
   );
 };
 
-export default Navbar;
+Navbar.propTypes = {
+  selectedArray: PropTypes.array.isRequired,
+  getCurrentlySelected: PropTypes.func.isRequired,
+  currentlySelectedLoaded: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  currentlySelectedLoaded: state.ingredients.currentlySelectedLoaded,
+});
+
+export default connect(mapStateToProps, { getCurrentlySelected })(Navbar);

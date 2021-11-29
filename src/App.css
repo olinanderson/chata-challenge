@@ -8,14 +8,13 @@ html,
 /* NAVBAR */
 .navbar {
   position: fixed;
-  width: 300px;
+  width: 250px;
   height: 100vh;
   background-color: #4a4a4a;
+  top: 0;
 }
 
 .navbar-element {
-  margin: 10px;
-  padding: 0 10px 10px 10px;
   font-size: 1.5rem;
   border-bottom: 1px solid grey;
   display: flex;
@@ -27,10 +26,12 @@ html,
   color: white;
   width: 100%;
   transition: 0.1s;
+  padding: 10px;
 }
 
 .navbar-element a:hover {
   border-right: 5px solid #348feb;
+  background-color: #838383;
 }
 
 .navbar-element:hover {
@@ -45,8 +46,7 @@ html,
 
 /* MAIN CONTENT */
 .main-content {
-  margin-left: 300px;
-  padding: 10px;
+  margin-left: 250px;
   height: 100vh;
 }
 
@@ -54,16 +54,17 @@ html,
   font-size: 1.5rem;
   border-bottom: 1px solid grey;
   padding: 10px;
+  margin: 0 20px 20px 20px;
 }
 
-.main-content img {
-  height: 100px;
-  width: 100px;
+.spinner {
+  position: relative;
+  top: 50%;
 }
 
 button {
-  padding: 10px;
-  margin: 10px;
+  padding: 5px;
+  margin: 10px 20px 10px 20px;
   font-size: 1rem;
   border-radius: 5px;
   background-color: #4a4a4a;
@@ -79,6 +80,130 @@ button.active {
 
 button:hover {
   cursor: pointer;
-  background-color: #348feb;
+  background-color: #86b8e9;
   color: white;
+}
+
+.container {
+  display: flex;
+  float: left;
+  justify-content: center;
+  width: 100%;
+}
+
+.button-column {
+  display: flex;
+  width: 220px;
+  height: 100%;
+  flex-direction: column;
+}
+
+.button-column p {
+  align-self: center;
+  margin: 5px;
+}
+
+/* RECIPE DETAILS */
+
+.drink-element {
+  margin: 20px 20px 40px 20px;
+  padding: 20px;
+  transition: 0.3s;
+  border-radius: 3px;
+  background-color: #c2c2c2;
+  color: black;
+}
+
+.drink-element.active {
+  background-color: white;
+}
+
+.drink-element:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.active.drink-element:hover {
+  cursor: default;
+}
+
+.drink-recipe {
+  color: black;
+  padding: 10px;
+}
+
+.top-card-drink {
+  display: flex;
+  justify-content: left;
+}
+
+.top-card-drink h2 {
+  margin: 20px;
+  font-weight: 400;
+}
+
+.top-card-drink {
+  background-color: #4a4a4a;
+  border-radius: 5px;
+  color: white;
+}
+
+.top-card-drink img {
+  height: 150px;
+  width: 150px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.active .top-card-drink img {
+  width: 250px;
+  height: 250px;
+}
+
+/* RESPONSIVENESS */
+/* If the screen size is 1100px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 1100px) {
+  .button-column p {
+    display: none;
+  }
+
+  .container {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .top-card-drink img {
+    height: 75px;
+    width: 75px;
+  }
+
+  .top-card-drink h2 {
+    margin: 20px;
+    font-weight: 400;
+  }
+
+  .active .top-card-drink img {
+    width: 150px;
+    height: 150px;
+  }
+
+  h2 {
+    font-size: 2.5vw;
+  }
+
+  p {
+    font-size: 2vw;
+  }
+
+  .navbar {
+    width: 20%;
+  }
+
+  .navbar-element a {
+    font-size: 2vw;
+  }
+
+  .main-content {
+    margin-left: 20%;
+  }
 }

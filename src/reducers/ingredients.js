@@ -3,18 +3,14 @@ import {
   GET_ALCOHOLIC_INGREDIENTS_FAIL,
   GET_CURRENTLY_SELECTED,
   GET_CURRENTLY_SELECTED_FAIL,
+  RESET_CURRENTLY_SELECTED,
 } from "../actions/types";
 
 const initialState = {
   alcoholicIngredientsLoaded: false,
   alcoholicIngredients: [],
-  currentlySelected: [
-    { strIngredient: "Rum", drinksLoaded: false },
-    { strIngredient: "Vodka", drinksLoaded: false },
-    { strIngredient: "Tequila", drinksLoaded: false },
-    { strIngredient: "Gin", drinksLoaded: false },
-    { strIngredient: "Whiskey", drinksLoaded: false },
-  ],
+  currentlySelected: null,
+  currentlySelectedLoaded: false,
 };
 
 export default function ingredients(state = initialState, action) {
@@ -36,11 +32,19 @@ export default function ingredients(state = initialState, action) {
       return {
         ...state,
         currentlySelected: payload,
+        currentlySelectedLoaded: true,
       };
     case GET_CURRENTLY_SELECTED_FAIL:
       return {
         ...state,
         currentlySelected: initialState.currentlySelected,
+        currentlySelectedLoaded: true,
+      };
+    case RESET_CURRENTLY_SELECTED:
+      return {
+        ...state,
+        currentlySelected: initialState.currentlySelected,
+        currentlySelectedLoaded: false,
       };
     default:
       return state;

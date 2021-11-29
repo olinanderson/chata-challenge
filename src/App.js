@@ -12,21 +12,31 @@ import Navbar from "./components/Navbar";
 import Drinklist from "./components/Drinklist";
 
 import { initialRequests } from "./actions/initial";
-import ingredients from "./reducers/ingredients";
 
 function App() {
   useEffect(() => {
     store.dispatch(initialRequests());
   }, []);
 
-  // Setting a more responsive current items
-  const [currentlySelectedResponsive, setCurrentlySelectedResponsive] =
-    useState(store.getState(ingredients).ingredients.currentlySelected);
+  // State
+  const [selectedArray, setSelectedArray] = useState([
+    { strIngredient: "Rum", drinksLoaded: false },
+    { strIngredient: "Vodka", drinksLoaded: false },
+    { strIngredient: "Tequila", drinksLoaded: false },
+    { strIngredient: "Gin", drinksLoaded: false },
+    { strIngredient: "Whiskey", drinksLoaded: false },
+  ]);
+
+  const [loading, setLoading] = useState(true);
 
   return (
     <Provider store={store}>
       <Router>
-        <Navbar currentlySelectedResponsive={currentlySelectedResponsive} />
+        <Navbar
+          selectedArray={selectedArray}
+          loading={loading}
+          setLoading={setLoading}
+        />
         <div className="main-content">
           <Routes>
             {/* Public Routes */}
@@ -34,14 +44,15 @@ function App() {
               path="/"
               element={
                 <Select
-                  currentlySelectedResponsive={currentlySelectedResponsive}
-                  setCurrentlySelectedResponsive={
-                    setCurrentlySelectedResponsive
-                  }
+                  selectedArray={selectedArray}
+                  setSelectedArray={setSelectedArray}
                 />
               }
             />
-            <Route path="/drinks/:drinkIndex" element={<Drinklist />} />
+            <Route
+              path="/drinks/:ingredient"
+              element={<Drinklist loading={loading} setLoading={setLoading} />}
+            />
           </Routes>
         </div>
       </Router>

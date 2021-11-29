@@ -6,6 +6,7 @@ import {
   GET_ALCOHOLIC_INGREDIENTS_FAIL,
   GET_CURRENTLY_SELECTED,
   GET_CURRENTLY_SELECTED_FAIL,
+  RESET_CURRENTLY_SELECTED,
 } from "./types";
 
 export const getAlcoholicIngredients = () => async (dispatch) => {
@@ -48,22 +49,24 @@ export const getAlcoholicIngredients = () => async (dispatch) => {
   }
 };
 
-export const getCurrentlySelected = (currentlySelected) => async (dispatch) => {
+export const getCurrentlySelected = (ingredient) => async (dispatch) => {
   try {
-    let payload = currentlySelected;
+    dispatch({
+      type: RESET_CURRENTLY_SELECTED,
+    });
 
-    for (let i = 0; i < currentlySelected.length; i++) {
-      if (!currentlySelected[i].drinksLoaded) {
-        let res = await axios.get(
-          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${currentlySelected[i].strIngredient}`
-        );
-        payload[i] = {
-          ...currentlySelected[i],
-          drinksLoaded: true,
-          drinks: res.data.drinks,
-        };
-      }
-    }
+    let res = await axios.get(
+      `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient.replace(
+        /_/g,
+        " "
+      )}`
+    );
+
+    let payload = {
+      ingredient: ingredient,
+      drinksLoaded: true,
+      drinks: res.data.drinks,
+    };
     dispatch({
       payload: payload,
       type: GET_CURRENTLY_SELECTED,
