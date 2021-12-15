@@ -1,4 +1,4 @@
-# Chata Frontend Coding Challenge
+# Cocktail API App
 
 ## Start script
 
